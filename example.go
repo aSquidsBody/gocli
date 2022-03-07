@@ -79,7 +79,7 @@ func childBehavior(ctx Context) {
 	verbose := ctx.Args["verbose"].(bool) // guaranteed to either be true of false (not nil)
 	label := ""
 	if ctx.Args["label"] != nil {
-		label = ctx.Args["label"].(string) + " " // pad with a space at the end
+		label = Blue("[" + ctx.Args["label"].(string) + "] ") // pad with a space at the end
 	}
 
 	// Read cli argument 'directory'

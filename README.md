@@ -182,7 +182,7 @@ Prints the help string for the command
 
 A configuration template for cli options
 
-### Type
+### Option.Type
 
 _Required_
 
@@ -190,7 +190,7 @@ Type: `string`
 
 Indicates the expected datatype of the option. Can be "bool", "string", "int", and "float"
 
-### Description
+### Option.Description
 
 _Optional_
 
@@ -198,7 +198,7 @@ Type: `string`
 
 A description of the option
 
-### Short
+### Option.Short
 
 _Optional_
 
@@ -207,7 +207,7 @@ Type: `string`
 A short name for the option. The "-" should be omitted, e.g. if you want to configure
 _-v_ as a short name for the option, then set _Short_ to _v_.
 
-### Long
+### Option.Long
 
 _Optional_
 
@@ -216,10 +216,64 @@ Type: `string`
 A long name for the option. The "--" should be omitted, e.g. if you want to configure
 _--verbose_ as a long name for the option, then set _Long_ to _verbose_.
 
-### Required
+### Option.Required
 
 _Optional_
 
 Type: `bool`
 
 Indicates whether the option is required (true) or optional (false). Defaults to false.
+
+## BashResult
+
+### BashResult.Stdout
+
+Type: `string`
+
+The _stdout_ of a bash command.
+
+### BashResult.Stderr
+
+Type: `string`
+
+The _stderr_ of a bash command.
+
+### BashResult.Err
+
+Type: `error`
+
+An error which may have occurred during the bash command. If the bash command fails (exits with non-zero code), then
+_BashResult.Err_ will not be <nil>
+
+## [Function] Bash
+
+Parameters: _cmd_ `string`
+
+Returns: `BashResult`
+
+Runs a bash command.
+
+## [Function] BashStream
+
+Parameters:
+
+- _cmd_ `string`
+- _stdout_ `bool`
+- _stderr_ `bool`
+
+Returns: `BashResult`
+
+Runs a bash command. If _stdout_ is true, the shell's stdout is copied in real time to the terminal. If _stderr_ is true, the shell's stderr is copied in real time to the terminal.
+
+## [Function] BashStreamLabel
+
+Parameters:
+
+- _cmd_ `string`
+- _stdout_ `bool`
+- _stderr_ `bool`
+- _label_ `string`
+
+Returns: `BashResult`
+
+Runs a bash command in the same manner as _BashStream_ with the addition behavior of prepending _label_ to each line of the streamed stdout/stderr.
