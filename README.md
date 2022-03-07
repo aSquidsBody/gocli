@@ -3,7 +3,7 @@ Command line interface framework in Go.
 # Installing
 
 ```bash
-go get github.com/aSquidsBody/gocli@v1.0.2
+go get github.com/aSquidsBody/gocli@v1.0.3
 ```
 
 # Usage
